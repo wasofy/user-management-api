@@ -21,12 +21,12 @@ public class User {
     private Long id;
 
     @NotBlank(message = "First name is required")
-    @Size(min = 1, max = 50, message = "First name must be between 1 and 50 characters")
+    @Size(max = 50, message = "First name must not exceed 50 characters")
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
     @NotBlank(message = "Last name is required")
-    @Size(min = 1, max = 50, message = "Last name must be between 1 and 50 characters")
+    @Size(max = 50, message = "Last name must not exceed 50 characters")
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
@@ -37,7 +37,7 @@ public class User {
     private String email;
 
     @NotBlank(message = "Password hash is required")
-    @Size(min = 8, max = 255, message = "Password hash must be between 8 and 255 characters")
+    @Size(min = 6, max = 255, message = "Password hash must be between 6 and 255 characters")
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
