@@ -8,6 +8,10 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+/**
+ * User entity representing a user account in the system.
+ * Stores password as hash only - never store plain text passwords.
+ */
 @Entity
 @Table(name = "users")
 public class User {
