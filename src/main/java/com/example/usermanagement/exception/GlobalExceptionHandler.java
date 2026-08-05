@@ -37,7 +37,6 @@ public class GlobalExceptionHandler {
     /**
      * Handles database constraint violations, e.g. inserting a duplicate email.
      * Returns 409 Conflict: the request was valid but conflicts with existing data.
-     * Without this handler the client would get a raw 500 Internal Server Error.
      */
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Map<String, Object>> handleDataIntegrityViolation(DataIntegrityViolationException ex) {

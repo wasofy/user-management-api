@@ -6,8 +6,7 @@ import jakarta.validation.constraints.Size;
 
 /**
  * Incoming payload for creating or updating a user.
- * Carries the plain-text password; the service hashes it before it ever
- * reaches the database. The client never sends or sees a hash.
+ * Carries the plain-text password; the service hashes it before persisting.
  */
 public record UserRequest(
 

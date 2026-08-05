@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Outgoing representation of a user.
- * Deliberately has no password field: the hash must never leave the server,
- * so the safest place to enforce that is the response type itself.
+ * Has no password field: the hash must never leave the server.
  */
 public record UserResponse(
         Long id,
