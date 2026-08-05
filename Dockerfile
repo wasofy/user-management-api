@@ -20,6 +20,9 @@ RUN mvn -q package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
+# Pull in Alpine security patches newer than the base image snapshot
+RUN apk upgrade --no-cache
+
 # Dedicated non-root user: if the app is compromised, the process
 # has no root privileges inside the container
 RUN addgroup -S spring && adduser -S spring -G spring
