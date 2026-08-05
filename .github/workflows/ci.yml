@@ -52,3 +52,22 @@ jobs:
       - name: Tear down
         if: always()
         run: docker compose down -v
+
+  image-scan:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build image
+        run: docker build -t user-management-api .
+
+      - name: Scan image for vulnerabilities
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: user-management-api
+          format: table
+          # Fail the pipeline on fixable high or critical CVEs
+          exit-code: '1'
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
