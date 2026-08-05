@@ -56,8 +56,8 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- BCrypt password hashing only - not the full Spring Security starter,
-             so no auto-configured login page or filter chain -->
+        <!-- BCrypt password hashing only, not the full Spring Security starter,
+             so no autoconfigured login page or filter chain -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>

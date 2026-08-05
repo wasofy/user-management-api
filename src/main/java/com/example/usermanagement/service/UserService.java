@@ -13,9 +13,8 @@ import java.util.List;
 
 /**
  * Service layer for user management operations.
- * Owns the DTO <-> entity mapping and password hashing: controllers and
- * clients only ever deal in UserRequest/UserResponse, never in entities,
- * so the password hash cannot leak out of this layer.
+ * Owns the DTO <-> entity mapping and password hashing; the User entity
+ * and its password hash never leave this layer.
  * All write operations are wrapped in transactions; reads are optimized with readOnly=true.
  */
 @Service

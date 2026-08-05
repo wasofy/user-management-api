@@ -52,7 +52,6 @@ class UserApiTests {
                 .andExpect(header().exists("Location"))
                 .andExpect(jsonPath("$.id").isNumber())
                 .andExpect(jsonPath("$.email").value("max@example.com"))
-                // the whole point of the DTO layer:
                 .andExpect(jsonPath("$.passwordHash").doesNotExist())
                 .andExpect(jsonPath("$.password").doesNotExist());
     }
