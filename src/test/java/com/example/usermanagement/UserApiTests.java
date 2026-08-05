@@ -95,6 +95,20 @@ class UserApiTests {
     }
 
     @Test
+    void duplicateEmailReturns409() throws Exception {
+        mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(VALID_USER_JSON))
+                .andExpect(status().isCreated());
+
+        mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(VALID_USER_JSON))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value("A user with this email already exists"));
+    }
+
+    @Test
     void unknownUserReturns404() throws Exception {
         mockMvc.perform(get("/api/users/9999"))
                 .andExpect(status().isNotFound())
