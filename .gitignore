@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+### Environment files (secrets) - only .env.example is committed ###
+.env
+
 ### H2 file-based database (local dev data) ###
 data/
 *.mv.db
