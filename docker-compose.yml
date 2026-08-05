@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: .env
+    # No published port: the database is reachable only from the compose
+    # network, not from the host or outside
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      # Named volume so data survives container recreation
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: .env
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
