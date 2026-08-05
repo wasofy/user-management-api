@@ -1,0 +1,25 @@
+# Files that must never reach the Docker build context.
+# Keeps builds fast (less to copy) and prevents leaking local data into images.
+
+# Build output - the image builds the JAR itself
+target/
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Local dev database - real data must never end up inside an image
+data/
+
+# Environment files - secrets stay on the host
+.env
+
+# Docs
+*.md
+HELP.md
