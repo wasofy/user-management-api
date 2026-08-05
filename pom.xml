@@ -56,6 +56,12 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- PostgreSQL for the docker profile; H2 stays for local dev and tests -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <!-- BCrypt password hashing only, not the full Spring Security starter,
              so no autoconfigured login page or filter chain -->
         <dependency>
